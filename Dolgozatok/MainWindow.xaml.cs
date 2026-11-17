@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Dolgozatok
 {
@@ -63,6 +64,13 @@ namespace Dolgozatok
 
         private void Mentes(object sender, RoutedEventArgs e)
         {
+            List<string> sorok = new List<string>();
+            foreach (var d in dolgozatok)
+            {
+                sorok.Add($"{d.Nev};{d.Eletkor};{d.Pontszam}");
+            }
+            File.WriteAllLines("dolgozat.txt", sorok);
+            MessageBox.Show("Sikeres mentés!");
 
         }
     }
