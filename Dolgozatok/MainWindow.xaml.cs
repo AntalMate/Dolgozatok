@@ -20,5 +20,15 @@ namespace Dolgozatok
         {
             InitializeComponent();
         }
+
+        private void Hozzaad(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Mentes(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
