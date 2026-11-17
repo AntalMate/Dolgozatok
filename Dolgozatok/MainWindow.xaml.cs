@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -33,7 +34,31 @@ namespace Dolgozatok
 
         private void Hozzaad(object sender, RoutedEventArgs e)
         {
+            if (nev.Text == "" || kor.Text == "" || pont.Text == "")
+            {
+                MessageBox.Show("Mindent ki kell tölteni");
+                return;
+            }
 
+            
+            
+            if (!int.TryParse(pont.Text, out int pontok)||!int.TryParse(kor.Text, out int kora))
+            {
+                MessageBox.Show("Csak szám lehet az életkor v a pont");
+                return;
+            }
+            if (pontok < 0 || pontok>100)
+            {
+                MessageBox.Show("A pontszám csak 0 és 100 között lehet");
+                return;
+            }
+
+            dolgozatok.Add(new Dolgozat(nev.Text, kora, pontok));
+            dg.Items.Refresh();
+
+            nev.Clear();
+            kor.Clear();
+            pont.Clear();
         }
 
         private void Mentes(object sender, RoutedEventArgs e)
